@@ -2,17 +2,21 @@
 # Paste into claude.ai/code → environment → Setup script.
 # Installs AP into the cloud VM's own ~/.claude so every session, in any repo,
 # starts as AP: identity as user-level CLAUDE.md, custom skills as user skills.
-# Requires Aphrosidiac/ap-plugin to be public (the VM can only auth to the
-# session's own repo).
+# The VM's proxy allows raw.githubusercontent.com but blocks github.com,
+# codeload and api.github.com, so files are fetched one by one from a manifest.
 set -u
-AP_TARBALL="https://codeload.github.com/Aphrosidiac/ap-plugin/tar.gz/refs/heads/main"
-tmp="$(mktemp -d)"
-if curl -fsSL "$AP_TARBALL" | tar -xz -C "$tmp" --strip-components=1; then
-  mkdir -p ~/.claude/skills
-  cp "$tmp/plugins/ap/hooks/identity.md" ~/.claude/CLAUDE.md
-  cp -R "$tmp/plugins/ap/skills/." ~/.claude/skills/
-  echo "AP installed: $(ls ~/.claude/skills | tr '\n' ' ')"
-else
-  echo "AP install skipped: could not fetch ap-plugin" >&2
-fi
-rm -rf "$tmp"
+RAW="https://raw.githubusercontent.com/Aphrosidiac/ap-plugin/main"
+manifest="$(curl -fsSL -m 20 "$RAW/manifest.txt")" || { echo "AP install skipped: no manifest" >&2; exit 0; }
+ok=0; fail=0
+while IFS= read -r f; do
+  [ -z "$f" ] && continue
+  case "$f" in
+    hooks/identity.md) dest="$HOME/.claude/CLAUDE.md" ;;
+    skills/*) dest="$HOME/.claude/$f" ;;
+    *) continue ;;
+  esac
+  mkdir -p "$(dirname "$dest")"
+  if curl -fsSL -m 20 "$RAW/plugins/ap/$f" -o "$dest"; then ok=$((ok+1)); else fail=$((fail+1)); fi
+done <<< "$manifest"
+echo "AP installed: $ok files, $fail failed"
+exit 0

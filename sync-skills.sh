@@ -14,3 +14,8 @@ for src in "${SOURCES[@]}"; do
   rsync -aL --delete --exclude '__pycache__' --exclude '.DS_Store' "$src/" "$DEST/$(basename "$src")/"
   echo "synced $(basename "$src")"
 done
+
+# Cloud VMs can only reach raw.githubusercontent.com, so cloud-setup.sh
+# fetches file by file from this list.
+(cd plugins/ap && find hooks/identity.md skills -type f ! -name '.DS_Store' ! -path '*/__pycache__/*' | sort) > manifest.txt
+echo "manifest: $(wc -l < manifest.txt | tr -d ' ') files"
