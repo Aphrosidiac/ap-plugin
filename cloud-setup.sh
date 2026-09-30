@@ -6,7 +6,7 @@
 # codeload and api.github.com, so files are fetched one by one from a manifest.
 set -u
 RAW="https://raw.githubusercontent.com/Aphrosidiac/ap-plugin/main"
-manifest="$(curl -fsSL -m 20 "$RAW/manifest.txt")" || { echo "AP install skipped: no manifest" >&2; exit 0; }
+manifest="$(curl -fsSL -m 20 --retry 3 --retry-all-errors "$RAW/manifest.txt")" || { echo "AP install skipped: no manifest" >&2; exit 0; }
 ok=0; fail=0
 while IFS= read -r f; do
   [ -z "$f" ] && continue
@@ -16,7 +16,7 @@ while IFS= read -r f; do
     *) continue ;;
   esac
   mkdir -p "$(dirname "$dest")"
-  if curl -fsSL -m 20 "$RAW/plugins/ap/$f" -o "$dest"; then ok=$((ok+1)); else fail=$((fail+1)); fi
+  if curl -fsSL -m 20 --retry 3 --retry-all-errors "$RAW/plugins/ap/$f" -o "$dest"; then ok=$((ok+1)); else fail=$((fail+1)); fi
 done <<< "$manifest"
 echo "AP installed: $ok files, $fail failed"
 exit 0
