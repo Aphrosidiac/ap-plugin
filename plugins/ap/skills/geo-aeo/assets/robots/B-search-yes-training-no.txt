@@ -1,0 +1,51 @@
+# robots.txt — Template B: be cited by AI answers, refuse model training
+# The common "GEO-safe" stance. Blocking training bots costs NO live citations, with one
+# exception: Google-Extended also removes you from Gemini-app / Vertex grounding (not from
+# AI Overviews or AI Mode). Blocking CCBot/GPTBot/ClaudeBot slowly removes the brand from
+# future models' built-in knowledge — make it a deliberate owner decision, not a default.
+# NEVER put Googlebot, Bingbot or Applebot in the training block: that kills classic search,
+# AI Overviews, Copilot and Siri.
+
+# 1) Default for everyone
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /account/
+Disallow: /cart/
+Disallow: /checkout/
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+
+# 2) Training-only crawlers and opt-out tokens
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: CCBot
+User-agent: MistralAI-Training
+User-agent: Bytespider
+User-agent: cohere-training-data-crawler
+Disallow: /
+
+# 3) Answer-engine index + user-triggered fetchers: explicitly allowed.
+#    Repeat the shared Disallows — a named group does not inherit from *.
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: meta-webindexer
+User-agent: Amzn-SearchBot
+User-agent: Amzn-User
+User-agent: DuckAssistBot
+User-agent: MistralAI-Index
+User-agent: MistralAI-User
+Allow: /
+Disallow: /admin/
+Disallow: /account/
+Disallow: /cart/
+Disallow: /checkout/
+
+Sitemap: https://www.example.com/sitemap.xml

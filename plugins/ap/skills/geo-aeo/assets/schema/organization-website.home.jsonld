@@ -1,0 +1,101 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.example.com/#organization",
+      "name": "Example Co",
+      "legalName": "Example Co Sdn. Bhd.",
+      "alternateName": [
+        "Example"
+      ],
+      "url": "https://www.example.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://www.example.com/#logo",
+        "url": "https://www.example.com/logo-512.png",
+        "contentUrl": "https://www.example.com/logo-512.png",
+        "width": 512,
+        "height": 512,
+        "caption": "Example Co"
+      },
+      "image": {
+        "@id": "https://www.example.com/#logo"
+      },
+      "description": "Example Co designs and installs X for Y across Malaysia. (One sentence, identical on every profile.)",
+      "foundingDate": "2019-04-01",
+      "founder": {
+        "@id": "https://www.example.com/about/jane-tan/#person"
+      },
+      "numberOfEmployees": {
+        "@type": "QuantitativeValue",
+        "value": 42
+      },
+      "email": "hello@example.com",
+      "telephone": "+60-3-1234-5678",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Level 8, 1 Jalan Example",
+        "addressLocality": "Kuala Lumpur",
+        "addressRegion": "Wilayah Persekutuan",
+        "postalCode": "50450",
+        "addressCountry": "MY"
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "support@example.com",
+          "telephone": "+60-3-1234-5679",
+          "availableLanguage": [
+            "en",
+            "ms"
+          ]
+        }
+      ],
+      "taxID": "SSM-202001234567",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Malaysia"
+      },
+      "knowsAbout": [
+        "Topic one",
+        "Topic two"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/company/example",
+        "https://www.wikidata.org/wiki/Q000000000",
+        "https://www.crunchbase.com/organization/example",
+        "https://www.youtube.com/@example",
+        "https://www.facebook.com/example",
+        "https://maps.google.com/?cid=0000000000000000000"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.example.com/#website",
+      "url": "https://www.example.com/",
+      "name": "Example Co",
+      "alternateName": [
+        "Example"
+      ],
+      "publisher": {
+        "@id": "https://www.example.com/#organization"
+      },
+      "inLanguage": "en-MY"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.example.com/#webpage",
+      "url": "https://www.example.com/",
+      "name": "Example Co — what we do, for whom, where",
+      "isPartOf": {
+        "@id": "https://www.example.com/#website"
+      },
+      "about": {
+        "@id": "https://www.example.com/#organization"
+      },
+      "inLanguage": "en-MY"
+    }
+  ]
+}

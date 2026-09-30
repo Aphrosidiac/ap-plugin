@@ -1,0 +1,92 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": "https://shop.example.com/p/widget-x/#product",
+  "name": "Widget X – 350 mL, blue",
+  "description": "What it is, the one true differentiator, who it is for.",
+  "image": [
+    "https://shop.example.com/img/wx-1x1.jpg",
+    "https://shop.example.com/img/wx-4x3.jpg",
+    "https://shop.example.com/img/wx-16x9.jpg"
+  ],
+  "sku": "WX-350-BLU",
+  "mpn": "WX2026-350",
+  "gtin13": "9555000000012",
+  "brand": {
+    "@type": "Brand",
+    "name": "Example"
+  },
+  "color": "Blue",
+  "category": "Home & Garden > Kitchen & Dining",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 4.6,
+    "bestRating": 5,
+    "ratingCount": 312,
+    "reviewCount": 128
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Aisha R."
+      },
+      "datePublished": "2026-08-14",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 5,
+        "bestRating": 5
+      },
+      "reviewBody": "Real review text shown on the page."
+    }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "url": "https://shop.example.com/p/widget-x/",
+    "price": 389.0,
+    "priceCurrency": "MYR",
+    "priceValidUntil": "2026-12-31",
+    "availability": "https://schema.org/InStock",
+    "itemCondition": "https://schema.org/NewCondition",
+    "seller": {
+      "@id": "https://shop.example.com/#organization"
+    },
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingRate": {
+        "@type": "MonetaryAmount",
+        "value": 0,
+        "currency": "MYR"
+      },
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "MY"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 1,
+          "maxValue": 3,
+          "unitCode": "DAY"
+        }
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "MY",
+      "returnPolicyCountry": "MY",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+      "merchantReturnDays": 30,
+      "returnMethod": "https://schema.org/ReturnByMail",
+      "returnFees": "https://schema.org/FreeReturn"
+    }
+  }
+}

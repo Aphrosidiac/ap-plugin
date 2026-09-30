@@ -1,0 +1,40 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ProductGroup",
+  "name": "Trail Runner 3",
+  "productGroupID": "TR3",
+  "brand": {
+    "@type": "Brand",
+    "name": "Example"
+  },
+  "description": "Lightweight trail shoe with 6 mm drop.",
+  "variesBy": [
+    "https://schema.org/size",
+    "https://schema.org/color"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": 4.6,
+    "reviewCount": 312
+  },
+  "hasVariant": [
+    {
+      "@type": "Product",
+      "sku": "TR3-42-BLK",
+      "gtin13": "0123456789012",
+      "name": "Trail Runner 3 – Black, EU 42",
+      "size": "42",
+      "color": "Black",
+      "image": "https://shop.example.com/img/tr3-blk.jpg",
+      "inProductGroupWithID": "TR3",
+      "offers": {
+        "@type": "Offer",
+        "url": "https://shop.example.com/p/trail-runner-3?color=black&size=42",
+        "price": 459.0,
+        "priceCurrency": "MYR",
+        "availability": "https://schema.org/InStock",
+        "itemCondition": "https://schema.org/NewCondition"
+      }
+    }
+  ]
+}

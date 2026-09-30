@@ -1,0 +1,67 @@
+{
+  "skill_name": "engineering-atlas",
+  "evals": [
+    {
+      "id": 0,
+      "name": "atlas-fullstack-erp",
+      "prompt": "work on WWPeps. explore the entire codebase. build graph for the entire pipelines it have, all the work flows, all exact functions listed out",
+      "expected_output": "A published artifact mapping every pipeline in the WWPeps round workflow, with SVG mechanism diagrams, exhaustive function and endpoint indexes, and traps found in the source.",
+      "files": [],
+      "assertions": [
+        "Produced a self-contained HTML document, not a markdown or plain-text file",
+        "Contains at least 2 inline <svg> diagrams, each with both a viewBox and an aria-label",
+        "validate.py reports no structural problems (tag balance, TOC/section match, tables wrapped)",
+        "contrast.py reports every SVG colour legible on BOTH theme grounds",
+        "Theme tokens are defined in all three places: bare :root, prefers-color-scheme dark guarded by :not([data-theme=light]), and [data-theme=dark]",
+        "terminal-report.md names at least one specific finding citing a real file or function, rather than a generic summary of the document",
+        "verify_claims.py surfaces no unexplained fabricated identifiers: anything it flags is either a proposed new thing, a file on the server rather than in the repo, or a checker artifact \u2014 screening tool, reviewed by hand, not a raw pass/fail threshold",
+        "Includes an exhaustive function index whose row count is within 20% of inventory.py ground truth",
+        "Includes a route/endpoint or module-surface index grounded in the real repo",
+        "Explains at least one mechanism (a gate, a state transition, an invariant) rather than only listing inventory"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "atlas-different-stack",
+      "prompt": "can you document how AscendBlog actually works? i need to hand this over to someone next month and there's nothing written down",
+      "expected_output": "A published artifact documenting the AscendBlog Next.js system, scaled to its size, grounded in real files.",
+      "files": [],
+      "assertions": [
+        "Produced a self-contained HTML document, not a markdown or plain-text file",
+        "Contains at least 2 inline <svg> diagrams, each with both a viewBox and an aria-label",
+        "validate.py reports no structural problems (tag balance, TOC/section match, tables wrapped)",
+        "contrast.py reports every SVG colour legible on BOTH theme grounds",
+        "Theme tokens are defined in all three places: bare :root, prefers-color-scheme dark guarded by :not([data-theme=light]), and [data-theme=dark]",
+        "terminal-report.md names at least one specific finding citing a real file or function, rather than a generic summary of the document",
+        "verify_claims.py surfaces no unexplained fabricated identifiers: anything it flags is either a proposed new thing, a file on the server rather than in the repo, or a checker artifact \u2014 screening tool, reviewed by hand, not a raw pass/fail threshold",
+        "Includes an exhaustive function index whose row count is within 20% of inventory.py ground truth",
+        "Includes a route/endpoint or module-surface index grounded in the real repo",
+        "Explains at least one mechanism (a gate, a state transition, an invariant) rather than only listing inventory",
+        "Document length and section count are scaled to the size of the system, not padded to match a large one"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "changespec-loose-notes",
+      "prompt": "these are the latest notes from the shuda ops meeting. expand on this, organize it, and tell me precisely how to wire this into the current system. i want to know everything that changes.",
+      "expected_output": "A published artifact decoding each note against the real ShudaLogistics code: requirement register, schema changes, breaking changes, open questions, phased build order.",
+      "files": [
+        "shuda-notes.md"
+      ],
+      "assertions": [
+        "Produced a self-contained HTML document, not a markdown or plain-text file",
+        "Contains at least 2 inline <svg> diagrams, each with both a viewBox and an aria-label",
+        "validate.py reports no structural problems (tag balance, TOC/section match, tables wrapped)",
+        "contrast.py reports every SVG colour legible on BOTH theme grounds",
+        "Theme tokens are defined in all three places: bare :root, prefers-color-scheme dark guarded by :not([data-theme=light]), and [data-theme=dark]",
+        "terminal-report.md names at least one specific finding citing a real file or function, rather than a generic summary of the document",
+        "All 10 input notes appear as distinct decoded requirements, including the Chinese-language note about zone capacity limits",
+        "Contains an explicit 'what breaks' analysis that references existing code paths in the repo",
+        "Contains at least 5 open questions the client needs to answer",
+        "Contains a phased build order with independently deployable phases",
+        "Every cited file path either exists in the repo, is clearly described as a new file to create, or is an infrastructure file the document says lives on the server",
+        "Identifies at least one collision or contradiction between the notes and what the code already does"
+      ]
+    }
+  ]
+}

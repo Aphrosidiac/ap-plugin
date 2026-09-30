@@ -1,0 +1,24 @@
+# robots.txt — Template C: classic search engines only, no AI crawlers at all
+# Caveat the owner must hear: Googlebot still feeds AI Overviews / AI Mode and Bingbot feeds
+# Copilot. The only way out of those while staying indexed is nosnippet / max-snippet (which
+# also degrades normal snippets) or Google's Search Console AI-features toggle. User-triggered
+# fetchers (ChatGPT-User, Perplexity-User, Google-Agent) may ignore robots.txt; block them at
+# the WAF if that matters. This template makes the site invisible in ChatGPT, Claude,
+# Perplexity and Meta AI answers — it is the opposite of GEO.
+
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: DuckDuckBot
+Allow: /
+Disallow: /admin/
+Disallow: /account/
+
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: *
+Disallow: /
+
+Sitemap: https://www.example.com/sitemap.xml

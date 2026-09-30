@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Report Title</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  /* ---------------------------------------------------------------------
+     Theme: warm off-white / dark charcoal editorial tone.
+     Respects OS dark mode via prefers-color-scheme, and an explicit
+     data-theme override in case the viewing environment sets one.
+     --------------------------------------------------------------------- */
+  :root {
+    --bg: #f7f5f1;
+    --panel: #ffffff;
+    --ink: #24261f;
+    --ink-soft: #5b5d52;
+    --line: #e4e0d6;
+    --accent: #5b7a3a;
+    --accent-soft: #eef2e6;
+    --bad: #b1462f;
+    --bad-soft: #fbeee9;
+    --good: #3b7a4e;
+    --good-soft: #e9f5ec;
+    --mono-bg: #f1efe8;
+    --shadow: 0 1px 2px rgba(30,30,20,0.06), 0 8px 24px rgba(30,30,20,0.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #171813;
+      --panel: #1f2118;
+      --ink: #eeece3;
+      --ink-soft: #a9ab9c;
+      --line: #33352a;
+      --accent: #8fbf65;
+      --accent-soft: #26301c;
+      --bad: #e2836a;
+      --bad-soft: #3a2420;
+      --good: #7fc496;
+      --good-soft: #1d3324;
+      --mono-bg: #242619;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #171813; --panel: #1f2118; --ink: #eeece3; --ink-soft: #a9ab9c;
+    --line: #33352a; --accent: #8fbf65; --accent-soft: #26301c;
+    --bad: #e2836a; --bad-soft: #3a2420; --good: #7fc496; --good-soft: #1d3324;
+    --mono-bg: #242619; --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+  }
+  :root[data-theme="light"] {
+    --bg: #f7f5f1; --panel: #ffffff; --ink: #24261f; --ink-soft: #5b5d52;
+    --line: #e4e0d6; --accent: #5b7a3a; --accent-soft: #eef2e6;
+    --bad: #b1462f; --bad-soft: #fbeee9; --good: #3b7a4e; --good-soft: #e9f5ec;
+    --mono-bg: #f1efe8; --shadow: 0 1px 2px rgba(30,30,20,0.06), 0 8px 24px rgba(30,30,20,0.05);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 48px 24px 96px; }
+
+  /* ---------- Header ---------- */
+  header.title { margin-bottom: 40px; }
+  header.title .eyebrow {
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 10px;
+  }
+  header.title h1 { font-size: 32px; margin: 0 0 10px; letter-spacing: -0.01em; }
+  header.title p.sub { color: var(--ink-soft); font-size: 16px; margin: 0; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12.5px; padding: 5px 11px; border-radius: 100px;
+    background: var(--panel); border: 1px solid var(--line); color: var(--ink-soft);
+  }
+  .chip b { color: var(--ink); font-weight: 600; }
+  .chip.good { background: var(--good-soft); border-color: transparent; color: var(--good); }
+
+  /* ---------- Sections ---------- */
+  section { margin-bottom: 52px; }
+  section > h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--ink-soft); border-bottom: 1px solid var(--line);
+    padding-bottom: 10px; margin-bottom: 22px; font-weight: 600;
+  }
+  h3 { font-size: 18px; margin: 0 0 8px; }
+  p { margin: 0 0 14px; }
+  p:last-child { margin-bottom: 0; }
+
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: var(--shadow); padding: 22px 24px;
+  }
+
+  /* ---------- Status bar (2-col cards) ---------- */
+  .status-bar { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 4px; }
+  @media (max-width: 640px) { .status-bar { grid-template-columns: 1fr; } }
+  .status-bar .item {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    padding: 16px 18px; box-shadow: var(--shadow);
+  }
+  .status-bar .item .label { font-size: 12px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .status-bar .item .value { font-size: 15px; font-weight: 600; }
+  .status-bar .item.done .value { color: var(--good); }
+
+  /* ---------- Quote thread (chat / message evidence) ---------- */
+  .quote-thread {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px;
+    padding: 4px 22px; box-shadow: var(--shadow);
+  }
+  .quote-thread .msg { padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .quote-thread .msg:last-child { border-bottom: none; }
+  .quote-thread .who { font-size: 12.5px; font-weight: 600; color: var(--ink-soft); margin-bottom: 4px; }
+  .quote-thread .orig { font-size: 16px; }
+  .quote-thread .translation { font-size: 13.5px; color: var(--ink-soft); font-style: italic; margin-top: 2px; }
+
+  /* ---------- Figures ---------- */
+  .figure { margin: 22px 0; }
+  .figure img {
+    width: 100%; display: block; border-radius: 10px;
+    border: 1px solid var(--line); box-shadow: var(--shadow);
+  }
+  .figure figcaption { font-size: 13.5px; color: var(--ink-soft); margin-top: 10px; text-align: center; }
+  .figure figcaption b { color: var(--ink); }
+  .figure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 700px) { .figure-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Callouts ---------- */
+  .callout { border-radius: 12px; padding: 16px 18px; font-size: 14.5px; margin: 18px 0; border: 1px solid transparent; }
+  .callout.bug  { background: var(--bad-soft);   color: var(--bad);  }
+  .callout.fix  { background: var(--good-soft);  color: var(--good); }
+  .callout.note { background: var(--accent-soft); color: var(--ink); border-color: var(--line); }
+  .callout b { font-weight: 700; }
+  .callout code { background: rgba(0,0,0,0.06); padding: 1px 5px; border-radius: 4px; font-size: 0.92em; }
+  :root[data-theme="dark"] .callout code { background: rgba(255,255,255,0.1); }
+  @media (prefers-color-scheme: dark) { .callout code { background: rgba(255,255,255,0.1); } }
+
+  code, .mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    background: var(--mono-bg); padding: 1px 6px; border-radius: 5px; font-size: 0.9em;
+  }
+
+  ol.steps, ul.plain { padding-left: 20px; margin: 0 0 14px; }
+  ol.steps li, ul.plain li { margin-bottom: 8px; }
+
+  /* ---------- Commit / reference table ---------- */
+  table.commit-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  table.commit-table th, table.commit-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  table.commit-table th { color: var(--ink-soft); font-weight: 600; font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.04em; }
+  table.commit-table td.sha { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--accent); }
+
+  .phase-label {
+    display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase; padding: 3px 9px; border-radius: 100px;
+    background: var(--accent-soft); color: var(--accent); margin-bottom: 10px;
+  }
+
+  footer { margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--line); font-size: 13px; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ HEADER ============
+       Replace the eyebrow/title/subtitle and status chips with the real
+       subject of this report. Delete chips that don't apply. -->
+  <header class="title">
+    <div class="eyebrow">Project · Report Type</div>
+    <h1>Report title goes here</h1>
+    <p class="sub">One-sentence summary of what this report covers and why it exists.</p>
+    <div class="meta-row">
+      <span class="chip good">✓ Some completed state</span>
+      <span class="chip">Date <b>YYYY-MM-DD</b></span>
+      <span class="chip">Relevant file: <span class="mono">path/to/file.ts</span></span>
+    </div>
+  </header>
+
+  <!-- ============ STATUS (optional — delete if not a multi-phase report) ============ -->
+  <section>
+    <h2>Status</h2>
+    <div class="status-bar">
+      <div class="item done">
+        <div class="label">Step / phase name</div>
+        <div class="value">✓ Status description</div>
+      </div>
+      <div class="item done">
+        <div class="label">Step / phase name</div>
+        <div class="value">✓ Status description</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVIDENCE / CONTEXT ============
+       quote-thread is for chat/message evidence (bug reports, client
+       feedback). Delete it if there's no message-based evidence. -->
+  <section>
+    <h2>Section heading</h2>
+    <p>Context paragraph explaining what this section shows.</p>
+
+    <div class="quote-thread">
+      <div class="msg">
+        <div class="who">Who said this</div>
+        <div class="orig">"Original quote, in the language it was said in"</div>
+        <div class="translation">— "Translation or paraphrase, if needed"</div>
+      </div>
+    </div>
+
+    <!-- Single figure. src MUST point at a real file in images/. -->
+    <div class="figure">
+      <img src="images/01-REPLACE-ME.png" alt="Descriptive alt text for accessibility and for readers who can't see the image">
+      <figcaption>Caption explaining what this shows and why it matters — not just "screenshot 1".</figcaption>
+    </div>
+
+    <!-- Side-by-side pair of figures. -->
+    <div class="figure-grid">
+      <div class="figure">
+        <img src="images/02-REPLACE-ME.png" alt="Alt text">
+        <figcaption>Caption.</figcaption>
+      </div>
+      <div class="figure">
+        <img src="images/03-REPLACE-ME.png" alt="Alt text">
+        <figcaption>Caption.</figcaption>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROOT CAUSE / FINDINGS (bug-fix and audit reports) ============ -->
+  <section>
+    <h2>Root cause</h2>
+    <p>Explain what's actually happening and why, grounded in what the evidence above shows.</p>
+
+    <div class="callout bug">
+      <b>Issue name.</b> Description of the problem, with <code>code.references</code> where relevant.
+    </div>
+  </section>
+
+  <!-- ============ THE FIX / RESULT ============ -->
+  <section>
+    <h2>The fix</h2>
+
+    <h3>Phase or step name</h3>
+    <p>What changed and why.</p>
+
+    <div class="figure">
+      <span class="phase-label">Result label</span>
+      <img src="images/04-REPLACE-ME.png" alt="Alt text">
+      <figcaption>Caption describing the after-state shown here — say where it came from (dev, staging, production) so the reader knows how much to trust it.</figcaption>
+    </div>
+
+    <!-- Delete this table if there's nothing to cite. -->
+    <table class="commit-table">
+      <tr><th>Commit</th><th>Message</th></tr>
+      <tr><td class="sha">abc1234</td><td>Commit message describing the change</td></tr>
+    </table>
+  </section>
+
+  <!-- ============ SIDE NOTES (optional) ============
+       Use "note" callouts for things worth flagging that aren't part of
+       the main fix — pre-existing issues noticed in passing, deliberate
+       scope decisions, etc. Don't hide these in the main narrative. -->
+  <div class="callout note">
+    <b>Noted in passing, not part of this fix:</b> description of something observed but out of scope.
+  </div>
+
+  <!-- ============ VERIFICATION ============
+       How you know this is actually true, not just how it was built. -->
+  <section>
+    <h2>How it was verified</h2>
+    <ol class="steps">
+      <li>Verification step one.</li>
+      <li>Verification step two.</li>
+    </ol>
+  </section>
+
+  <footer>
+    Generated YYYY-MM-DD · Project name · Additional context
+  </footer>
+
+</div>
+</body>
+</html>

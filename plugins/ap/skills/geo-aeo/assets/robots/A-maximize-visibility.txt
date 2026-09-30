@@ -1,0 +1,20 @@
+# robots.txt — Template A: maximize visibility in classic + AI search (allows training too)
+# Use when: the owner wants to be known and cited everywhere, including future models'
+# built-in knowledge (training crawlers: GPTBot, ClaudeBot, CCBot, Google-Extended...).
+# With no named groups every crawler obeys the * group. If you add a named group later,
+# COPY the shared Disallow lines into it — a named bot stops reading the * group.
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /account/
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /search?
+Disallow: /*?*sessionid=
+
+# Cloudflare Content Signals (declares usage preference; set ai-input=yes explicitly —
+# Cloudflare's managed default omits it). Harmless for crawlers that don't read it.
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+Sitemap: https://www.example.com/sitemap.xml

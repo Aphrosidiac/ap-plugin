@@ -1,0 +1,12 @@
+id,text,stratum,persona,locale,weight
+p001,what is <category> and how does it work,discovery,first-time buyer,MY,1
+p002,how much does <service> cost in <city>,discovery,first-time buyer,MY,2
+p003,best <category> for <segment> in <country>,best-for,comparison shopper,MY,3
+p004,<category> for <constraint e.g. under RM2000 / small team / landed house>,best-for,budget-constrained,MY,2
+p005,<brand> vs <competitor> which is better for <use case>,comparison,evaluator,MY,2
+p006,alternatives to <competitor>,comparison,switcher,MY,2
+p007,is <brand> legit / <brand> reviews,branded-fact,evaluator,MY,1
+p008,does <brand> <do/ship/support X>,branded-fact,customer,MY,1
+p009,<brand> pricing,branded-fact,evaluator,MY,1
+p010,<service> near <neighbourhood> open on Sunday,local-transactional,local buyer,MY,2
+p011,<same intent as p003 written in colloquial Malaysian Malay with English trade words>,best-for,BM speaker,MY,2

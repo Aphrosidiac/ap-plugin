@@ -1,0 +1,37 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "X statistics (2026): 40 data points on Y in Malaysia",
+      "datePublished": "2026-03-01T09:00:00+08:00",
+      "dateModified": "2026-09-01T09:00:00+08:00",
+      "author": {
+        "@id": "https://www.example.com/about/jane-tan/#person"
+      },
+      "publisher": {
+        "@id": "https://www.example.com/#organization"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "name": "X survey 2026 (n=1,204)",
+      "description": "Anonymised responses from 1,204 Malaysian buyers of X, collected Jan–Feb 2026 by Example Co. Methodology on the page.",
+      "url": "https://www.example.com/research/x-statistics-2026/",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://www.example.com/#organization"
+      },
+      "temporalCoverage": "2026-01-01/2026-02-28",
+      "spatialCoverage": "Malaysia",
+      "isAccessibleForFree": true,
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "text/csv",
+          "contentUrl": "https://www.example.com/research/x-statistics-2026.csv"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": "https://www.example.com/services/x-installation/#service",
+  "name": "X installation",
+  "serviceType": "X installation",
+  "description": "What is included, turnaround, who it is for.",
+  "provider": {
+    "@id": "https://www.example.com/#organization"
+  },
+  "areaServed": [
+    {
+      "@type": "State",
+      "name": "Selangor"
+    },
+    {
+      "@type": "City",
+      "name": "Kuala Lumpur"
+    }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": 1500,
+    "priceCurrency": "MYR",
+    "url": "https://www.example.com/services/x-installation/",
+    "description": "From RM1,500 for a standard 3-room job"
+  }
+}

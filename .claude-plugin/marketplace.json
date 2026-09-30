@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "ap",
+  "owner": { "name": "Aphrosidiac" },
+  "metadata": { "description": "AP for Claude Code cloud sessions: identity, working rules and Fakhrul's custom skills." },
+  "plugins": [
+    {
+      "name": "ap",
+      "source": "./plugins/ap",
+      "description": "Loads AP's identity and working rules at session start (cloud only) and ships reference-clone, engineering-atlas, geo-aeo and visual-report."
+    }
+  ]
+}

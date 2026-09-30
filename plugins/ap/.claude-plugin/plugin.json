@@ -1,0 +1,6 @@
+{
+  "name": "ap",
+  "version": "0.1.0",
+  "description": "AP identity, working rules and custom skills for Claude Code cloud sessions",
+  "author": { "name": "Aphrosidiac" }
+}

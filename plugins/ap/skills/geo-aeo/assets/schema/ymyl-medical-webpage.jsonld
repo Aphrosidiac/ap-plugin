@@ -1,0 +1,27 @@
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  "headline": "Dengue fever: warning signs in adults",
+  "lastReviewed": "2026-09-01",
+  "reviewedBy": {
+    "@type": "Person",
+    "name": "Dr. Aisyah Rahman",
+    "jobTitle": "Consultant Physician",
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "MMC registration"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/example"
+    ]
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Klinik Contoh",
+    "url": "https://example.my"
+  },
+  "about": {
+    "@type": "MedicalCondition",
+    "name": "Dengue fever"
+  }
+}

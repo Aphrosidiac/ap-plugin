@@ -1,0 +1,81 @@
+{
+  "skill_name": "geo-aeo",
+  "evals": [
+    {
+      "id": 0,
+      "name": "audit-live-site",
+      "prompt": "audit ffdev.studio for GEO and AEO. how visible are we to chatgpt and perplexity and what should we fix first",
+      "expected_output": "docs/geo baseline + prioritised plan grounded in real script output, P0 access checked before content advice, no myth recommendations.",
+      "files": [],
+      "assertions": [
+        "Ran audit.py and bot_access.py against the live site and quotes their actual findings (not generic advice)",
+        "Checked rendering (render_diff.mjs or an equivalent raw-vs-rendered comparison) on at least the homepage and one inner template",
+        "The plan is ordered P0 access → P1 entity → P2 extractability → P3 coverage, and every item says who does it (agent or owner) and how it will be verified",
+        "Does not recommend llms.txt, FAQ schema or 'chunking' as citation levers, and makes no percentage-uplift promise",
+        "States whether AI visibility was actually measured (ai_visibility.py or a labelled manual sample) or explicitly says it was not",
+        "Owner decisions (training-crawler policy, CDN settings, deploy) are listed as decisions, not silently made"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "transform-nextjs-repo",
+      "prompt": "make this next.js site perfect for AI search — geo, aeo, the lot. no questions",
+      "expected_output": "Code changes in the repo following implementation.md: per-page metadata, JSON-LD graph, robots, sitemap lastmod, answer-first content on key pages, verified by re-running the scripts.",
+      "files": [],
+      "assertions": [
+        "Canonical and openGraph are set per page, not in the root layout",
+        "Streaming-metadata trap handled (static/cached metadata or htmlLimitedBots including AI crawlers), verified with curl -A GPTBot showing <title> and canonical inside <head>",
+        "JSON-LD is one connected @graph per page with stable @ids, rendered on the server, and every fact in it is visible on the page",
+        "Sitemap lastModified comes from content update dates, not build time",
+        "No fabricated statistics, reviews, authors or dates; unknown facts are marked [NEEDS SOURCE]",
+        "Before/after audit.py runs are both saved and compared",
+        "Did not deploy"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "bot-blocking-diagnosis",
+      "prompt": "we rank fine on google but chatgpt and claude never mention us. is something blocking the ai bots?",
+      "expected_output": "Diagnosis across robots.txt groups, CDN/WAF (Cloudflare defaults), JS rendering and logs, with the distinction between training, search and user bots.",
+      "files": [],
+      "assertions": [
+        "Evaluates robots.txt per bot with group semantics (a named group does not inherit *), not by eyeballing",
+        "Probes the edge with bot user-agents (bot_access.py) and explains the spoofed-UA caveat",
+        "Checks whether content exists in raw HTML (non-Google AI crawlers do not run JavaScript)",
+        "Mentions Cloudflare's default AI-crawler blocking and that Claude's search runs on Brave, which follows Googlebot rules",
+        "Distinguishes OAI-SearchBot/Claude-SearchBot (needed for citation) from GPTBot/ClaudeBot (training only)",
+        "Suggests log verification (log_bots.py) as ground truth rather than concluding from probes alone"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "single-page-rewrite",
+      "prompt": "rewrite our /services/aircond-servicing page so it gets picked up in AI overviews and chatgpt. we're in shah alam",
+      "expected_output": "The page restructured to the service skeleton with answer capsules, real prices/evidence or [NEEDS SOURCE], BM considerations, schema mirroring visible content.",
+      "files": [],
+      "assertions": [
+        "Opens with a 40–60 word, link-free answer capsule naming the service, area and a price-from (or [NEEDS SOURCE] for the price)",
+        "Uses question-shaped H2s covering cost, what's included, process, comparison, areas served and real FAQs",
+        "Every statistic, rating, license number or customer claim is either sourced from the site/owner or marked [NEEDS SOURCE]",
+        "Does not create one near-duplicate page per suburb (doorway risk) and says why",
+        "Recommends or provides a colloquial Malaysian Malay version with hreflang ms-MY (not 'my')",
+        "Service/LocalBusiness JSON-LD matches the visible text and does not invent an address"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "measurement-setup",
+      "prompt": "set up tracking so we can see if our brand shows up in chatgpt, perplexity and google ai overviews over time",
+      "expected_output": "Prompt set, ai_visibility.py configuration, GA4 AI channel regex, GSC/BWT reports, log proxy, and an experiment/baseline plan with confidence intervals.",
+      "files": [],
+      "assertions": [
+        "Builds a stratified, frozen prompt set with personas and competitors rather than a handful of keywords",
+        "Reports rates with confidence intervals and repeated runs; explicitly avoids 'rank in ChatGPT'",
+        "Includes the GA4 custom channel regex and notes the native AI Assistant channel excludes Perplexity and Google AI Overviews",
+        "Uses GSC Generative AI report and Bing Webmaster Tools AI Performance as first-party sources",
+        "Notes API answers differ from consumer apps and plans a manual calibration sample",
+        "Uses SerpApi (or equivalent) for Google AI Overviews / AI Mode rather than claiming the Gemini API shows AIO"
+      ]
+    }
+  ]
+}

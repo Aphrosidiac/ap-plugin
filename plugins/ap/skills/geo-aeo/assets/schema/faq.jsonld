@@ -1,0 +1,22 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you ship to East Malaysia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Sabah and Sarawak orders ship in 3–5 working days for a flat RM15."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is your return window?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "30 days from delivery, free return by mail."
+      }
+    }
+  ]
+}

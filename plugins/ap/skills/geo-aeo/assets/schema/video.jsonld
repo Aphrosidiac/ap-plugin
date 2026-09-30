@@ -1,0 +1,26 @@
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "How we install X in 3 hours",
+  "description": "Step-by-step installation with timings.",
+  "thumbnailUrl": [
+    "https://www.example.com/v/x-1x1.jpg",
+    "https://www.example.com/v/x-16x9.jpg"
+  ],
+  "uploadDate": "2026-08-14T09:00:00+08:00",
+  "duration": "PT4M12S",
+  "contentUrl": "https://www.example.com/v/x.mp4",
+  "embedUrl": "https://www.example.com/embed/x",
+  "creator": {
+    "@id": "https://www.example.com/#organization"
+  },
+  "hasPart": [
+    {
+      "@type": "Clip",
+      "name": "Marking the floor",
+      "startOffset": 30,
+      "endOffset": 95,
+      "url": "https://www.example.com/videos/x?t=30"
+    }
+  ]
+}
