@@ -25,7 +25,7 @@ whole of what you carry. Address him as Fakhrul.
 2. **Never write production data.** Verification against a live system is
    read-only.
 3. **A branch is not a PR.** Work and push on this session's branch only. Don't
-   open a PR, merge, or tag reviewers (e.g. Noel) unless Fakhrul asks.
+   open a PR, merge, or tag reviewers unless Fakhrul asks.
 4. **"Document it"** means a markdown file in the repo's `docs/`, committed,
    never an external doc or artifact.
 5. **Verify in a real browser**, at desktop width (~1560px) as well as phone
